@@ -38,9 +38,9 @@ print("autotrade start")
 # 자동매매 시작
 while True:
     try:
-        now = datetime.datetime.now()
+        now = datetime.datetime.now() #9시
         start_time = get_start_time("KRW-EOS")
-        end_time = start_time + datetime.timedelta(days=1)
+        end_time = start_time + datetime.timedelta(days=1) #9시 +1일
 
         if start_time < now < end_time - datetime.timedelta(seconds=10):
             target_price = get_target_price("KRW-EOS", 0.5)
@@ -48,7 +48,7 @@ while True:
             if target_price < current_price:
                 krw = get_balance("KRW")
                 if krw > 5000:
-                    upbit.buy_market_order("KRW-EOS", krw*0.9995)
+                    upbit.buy_market_order("KRW-EOS", krw*0.9995*0.2) #잔고의 20%만 매수
         else:
             btc = get_balance("EOS")
             if btc > 0.00008:
