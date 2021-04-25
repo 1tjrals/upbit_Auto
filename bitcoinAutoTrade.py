@@ -48,7 +48,7 @@ while True:
             if target_price < current_price:
                 krw = get_balance("KRW")
                 if krw > 5000:
-                    upbit.buy_market_order("KRW-EOS", krw*0.9995*0.2) #잔고의 20%만 매수
+                    upbit.buy_market_order("KRW-EOS", krw*0.9995) 
         else:
             btc = get_balance("EOS")
             if btc > 0.00008:
