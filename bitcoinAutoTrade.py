@@ -2,8 +2,8 @@ import time
 import pyupbit
 import datetime
 
-access = "YavQpFdQ7G30UHmKnmNVCYtZxrkZyhX2xVmb5w5n"
-secret = "5vokVHwQOKkpK4d8SEGNusxoOC2XsESL1EijUIox"
+access = "84pxNeswUh2rRoXHNTa4VOm9GFQKZ36on4hGnwxA"
+secret = "ZvBva3U1Jq3pxUDMlfaMlj0LpiqqnF4hsE3faUSs"
 
 def get_target_price(ticker, k):
     """변동성 돌파 전략으로 매수 목표가 조회"""
@@ -39,20 +39,20 @@ print("autotrade start")
 while True:
     try:
         now = datetime.datetime.now() #9시
-        start_time = get_start_time("KRW-EOS")
+        start_time = get_start_time("KRW-SOL")
         end_time = start_time + datetime.timedelta(days=1) #9시 +1일
 
         if start_time < now < end_time - datetime.timedelta(seconds=10):
-            target_price = get_target_price("KRW-EOS", 0.5)
-            current_price = get_current_price("KRW-EOS")
+            target_price = get_target_price("KRW-SOL", 0.5)
+            current_price = get_current_price("KRW-SOL")
             if target_price < current_price:
                 krw = get_balance("KRW")
                 if krw > 5000:
-                    upbit.buy_market_order("KRW-EOS", krw*0.9995) 
+                    upbit.buy_market_order("KRW-SOL", krw*0.9995) 
         else:
-            btc = get_balance("EOS")
+            btc = get_balance("SOL")
             if btc > 0.00008:
-                upbit.sell_market_order("KRW-EOS", btc*0.9995)
+                upbit.sell_market_order("KRW-SOL", btc*0.9995)
         time.sleep(1)
     except Exception as e:
         print(e)
